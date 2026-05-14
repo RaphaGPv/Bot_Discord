@@ -34,6 +34,9 @@ async def on_message(message):
     # Ignora mensagens do próprio bot
     if message.author.bot:
         return
+    # Ignora administradores
+    if message.author.guild_permissions.administrator:
+        return
 
     # Verifica se a mensagem foi no canal proibido
     if message.channel.id == CANAL_PROIBIDO:
