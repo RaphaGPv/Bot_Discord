@@ -12,7 +12,7 @@ TOKEN = os.getenv("TOKEN")
 
 # ID do canal proibido
 # Clique no canal do Discord > Copiar ID
-CANAL_PROIBIDO = 123456789012345678
+CANAL_PROIBIDO = 1504581872968007770
 
 # Intents necessárias
 intents = discord.Intents.default()
