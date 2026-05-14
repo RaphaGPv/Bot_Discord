@@ -9,6 +9,7 @@ load_dotenv()
 
 # Pega o token do .env
 TOKEN = os.getenv("TOKEN")
+print("TOKEN encontrada:", TOKEN is not None)
 
 # ID do canal proibido
 # Clique no canal do Discord > Copiar ID
