@@ -1,8 +1,9 @@
 import discord
 from discord.ext import commands
-
 from dotenv import load_dotenv
 import os
+from flask import Flask
+from threading import Thread
 
 # Carrega o arquivo .env
 load_dotenv()
@@ -10,6 +11,20 @@ load_dotenv()
 # Pega o token do .env
 TOKEN = os.getenv("TOKEN")
 print("TOKEN encontrada:", TOKEN is not None)
+
+# Flask
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "Bot online"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
 
 # ID do canal proibido
 # Clique no canal do Discord > Copiar ID
@@ -69,6 +84,8 @@ async def on_message(message):
 
         except Exception as e:
             print(f"Erro: {e}")
+# Inicia Flask
+keep_alive()
 
 # Liga o bot
 bot.run(TOKEN)
