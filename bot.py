@@ -42,6 +42,13 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     print(f"✅ Bot conectado como {bot.user}")
+@bot.event
+async def on_disconnect():
+    print("⚠️ Bot desconectado!")
+
+@bot.event
+async def on_resumed():
+    print("✅ Bot reconectado!")
 
 # Detecta mensagens
 @bot.event
@@ -88,4 +95,4 @@ async def on_message(message):
 keep_alive()
 
 # Liga o bot
-bot.run(TOKEN)
+bot.run(TOKEN, reconnect=True, log_handler=None)
